@@ -1,0 +1,7 @@
+exports.APP_TYPE = {
+  WEB_APP: 1,
+  WECHAT_APP: 2,
+  WAP_APP: 3,
+  REACT_NATIVE_APP: 4,
+  OTHER_APP: 9
+};
