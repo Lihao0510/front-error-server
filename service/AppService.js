@@ -1,18 +1,27 @@
 const AppDao = require("../dao/AppDao");
+const ErrorHandler = require('../utils/ErrorHandler');
+const ResponseBuilder = require('../utils/ResponseBuilder');
 
+//获取当前应用列表
 exports.getAppList = async function() {
   try {
-    return await AppDao.queryAllApps();
-  } catch (e) {}
+    const [rows, fields] = await AppDao.queryAllApps();
+    return ResponseBuilder.buildDefaultResponse(rows);
+  } catch (e) {
+    return ErrorHandler(e);
+  }
 };
 
+//创建新的App
 exports.createApp = async function(app) {
   try {
-    const createResult = await AppDao.createApp(app);
-    console.log("创建结果 ==>", createResult);
-    return createResult;
+    const [rows, fields] = await AppDao.createApp(app);
+    if (rows.insertId) {
+      return ResponseBuilder.buildDefaultResponse(rows.insertId);
+    } else {
+      throw new Error('App创建失败,名称重复!');
+    }
   } catch (e) {
-    console.log("创建失败 ==>", e);
-    return [{}];
+    return ErrorHandler(e);
   }
 };

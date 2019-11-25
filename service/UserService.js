@@ -1,4 +1,6 @@
 const request = require("../network/http");
+const ErrorHandler = require('../utils/ErrorHandler');
+const ResponseBuilder = require('../utils/ResponseBuilder');
 
 /*
 * 用户登录功能
@@ -28,8 +30,8 @@ exports.login = async function(username, password, loginType = 1) {
       }
     });
 
-    return userInfo.principal;
+    return ResponseBuilder.buildDefaultResponse(userInfo.principal);
   } catch (e) {
-    console.log('出什么错误了 ==>', e)
+    return ErrorHandler(e);
   }
 };
