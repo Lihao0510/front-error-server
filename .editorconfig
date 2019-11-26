@@ -1,13 +1,16 @@
-# 告诉EditorConfig插件，这是根文件，不用继续往上查找
+# Top-most EditorConfig file
 root = true
 
-# 匹配全部文件
 [*]
-# 结尾换行符，可选"lf"、"cr"、"crlf"
-end_of_line = lf
-# 在文件结尾插入新行
+charset = utf-8
+end_of_line = LF
+trim_trailing_whitespace = true
 insert_final_newline = true
-# 匹配js和py结尾的文件
+
+[*.js]
+indent_style = space
 indent_size = 2
-tab_width = 2
-spaces_around_brackets = inside
+
+[*.{yml,yaml,json}]
+indent_style = space
+indent_size = 2
