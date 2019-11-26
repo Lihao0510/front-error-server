@@ -6,7 +6,7 @@ const onerror = require("koa-onerror");
 const bodyparser = require("koa-bodyparser");
 const logger = require("koa-logger");
 
-const index = require("./controller/index");
+const index = require("./controller/app");
 const users = require("./controller/users");
 
 // error handler
