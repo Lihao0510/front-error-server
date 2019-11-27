@@ -9,7 +9,7 @@ exports.createApp = async function (app) {
 };
 
 exports.updateApp = async function (id, params) {
-  return await pool.execute(`UPDATE front_error.app SET ${params} WHERE id = ${id}`, []);
+  return await pool.execute(`UPDATE front_error.app SET ${params} WHERE id = ?`, [id]);
 };
 
 exports.deleteApp = async function (appId) {
