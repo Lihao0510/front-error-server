@@ -1,11 +1,11 @@
-const pool = require("../data-source/mysql");
+const pool = require('../data-source/mysql');
 
 exports.queryAllApps = async function () {
-  return await pool.query("select * from app");
+  return await pool.query('select * from app');
 };
 
 exports.createApp = async function (app) {
-  return await pool.query("INSERT INTO app SET ?", app);
+  return await pool.query('INSERT INTO app SET ?', app);
 };
 
 exports.updateApp = async function (id, params) {
@@ -13,5 +13,5 @@ exports.updateApp = async function (id, params) {
 };
 
 exports.deleteApp = async function (appId) {
-  return await pool.execute("DELETE FROM front_error.app WHERE id = ?", [appId]);
+  return await pool.execute('DELETE FROM front_error.app WHERE id = ?', [appId]);
 };

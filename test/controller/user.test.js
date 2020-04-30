@@ -7,12 +7,11 @@ const app = require('../../app');
 
 let server = app.listen();
 
-/*afterAll(async done => {
+/* afterAll(async done => {
   await server.close && server.close();
-});*/
+}); */
 
 describe('Test User Controller', () => {
-
   const request = supertest(server);
 
   it('test login', async done => {
@@ -23,6 +22,6 @@ describe('Test User Controller', () => {
 
     expect(res.statusCode).toBe(200);
 
-    done()
+    done();
   });
 });

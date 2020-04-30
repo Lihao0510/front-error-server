@@ -1,13 +1,14 @@
-const Koa = require("koa");
-const json = require("koa-json");
-const onerror = require("koa-onerror");
-const bodyparser = require("koa-bodyparser");
-const logger = require("koa-logger");
+const Koa = require('koa');
+const json = require('koa-json');
+const onerror = require('koa-onerror');
+const bodyparser = require('koa-bodyparser');
+const logger = require('koa-logger');
 
 const app = new Koa();
 
-const index = require("./controller/app");
-const users = require("./controller/users");
+const index = require('./controller/app');
+const users = require('./controller/users');
+const error = require('./controller/error');
 
 // error handler
 onerror(app);
@@ -15,7 +16,7 @@ onerror(app);
 // middlewares
 app.use(
   bodyparser({
-    enableTypes: ["json", "form", "text"]
+    enableTypes: ['json', 'form', 'text']
   })
 );
 app.use(json());
@@ -30,13 +31,14 @@ app.use(async (ctx, next) => {
 });
 
 // controller
-//app.use(users.routes(), users.allowedMethods());
+// app.use(users.routes(), users.allowedMethods());
 app.use(index.routes());
 app.use(users.routes());
+app.use(error.routes());
 
 // error-handling
-app.on("error", (err, ctx) => {
-  console.error("server error ==>", err, ctx);
+app.on('error', (err, ctx) => {
+  console.error('server error ==>', err, ctx);
 });
 
 module.exports = app;

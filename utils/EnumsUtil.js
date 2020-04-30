@@ -4,7 +4,7 @@
 * @Date 2019/11/25
 * */
 
-//将枚举值返回为{code, name格式}
-exports.convertToEnum = function() {
+// 将枚举值返回为{code, name格式}
+exports.convertToEnum = function () {
 
 };
